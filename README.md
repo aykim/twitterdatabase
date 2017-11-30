@@ -24,8 +24,8 @@ Summary:
 3. To run the program:
  - You need 2 programs: "akmaster.py" "akparse.py"
  - --> python akmaster.py <path/to/data>
-  - This will do all extraction, parse, sort, remove duplicates, and put into database tables.
-  - akparse.py is run automatically inside akmaster.py
+    - This will do all extraction, parse, sort, remove duplicates, and put into database tables.
+    - akparse.py is run automatically inside akmaster.py
 
 To run the juicy analysis after data in database:
 --> sudo python akpost.py <parameters>
