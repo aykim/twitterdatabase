@@ -22,15 +22,15 @@ Summary:
  * iv) Make sure "maintenance_work_mem" is 1 GB.
 
 3. To run the program:
- - You need 2 programs: "akmaster.py" "akparse.py"
- - --> python akmaster.py <path/to/data>
+ - To run the main program: "akmaster.py" "akparse.py"
+    - `python akmaster.py <path/to/data>`
     - This will do all extraction, parse, sort, remove duplicates, and put into database tables.
     - akparse.py is run automatically inside akmaster.py
 
-To run the juicy analysis after data in database:
---> sudo python akpost.py <parameters>
---> sudo python akpsql.py <parameters>
-*sudo solves problem with matplotlib library on garnet server.
+ - To run the juicy analysis after data in database:
+    - `sudo python akpost.py <parameters>`
+    - `sudo python akpsql.py <parameters>`
+    - *sudo solves problem with matplotlib library on garnet server.
 
 Some helpful programs to use to debug:
 --> python akfind.py <path/to/data>
