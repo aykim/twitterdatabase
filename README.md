@@ -51,17 +51,18 @@ A Database for Twitter Content and Network Analysis
 --------------------------------------
 ## Detailed Explanations
 
-1. IMPORTANT Instructions to follow **EVERYTIME BEFORE RUNNING** the program  **CHECKLIST**
+###1. IMPORTANT Instructions to follow **EVERYTIME BEFORE RUNNING** the program
 
 These paths will be used to as examples:
-`/data/timeline`  <-- Directory that contains the 7 python programs.  Results from program are output into this folder
-`/data/timeline/extract`   <--- Where all the archive twitter data .tar.gz files have been extracted to.  **_Please manually extract all .tar.gz files into 1 directory_** (since the code goes through all subdirectories in the specified path, folder hierarchy does not matter)
+ - `/data/timeline`  <-- Directory that contains the 7 python programs.  Results from program are output into this folder
+ - `/data/timeline/extract`   <--- Where all the archive twitter data .tar.gz files have been extracted to.  **_Please manually extract all .tar.gz files into 1 directory_** (since the code goes through all subdirectories in the specified path, folder hierarchy does not matter)
 
 1) Run "clean_database.py" -->  `python clean_database.py`
 This will completely remove all tables from the database.  This is required so that consecutive runs do not make data overlap in the tables.  **FAILURE TO DO THIS WILL MAKE DATA OVERLAP**.
+
 To test that this ran correctly:  
-    Go onto psql commandline and type `\d+`
-    You should get: `No relations found.`
+    - Go onto psql commandline and type `\d+`
+    - You should get: `No relations found.`
 
 2) Run "clean_directory.py <path/to/directory/to/data>" --> python clean_directory.py /data/timeline/extract
 NOTE: the parameter- the path to the data, is where all the tar.gz files have been extracted to.
