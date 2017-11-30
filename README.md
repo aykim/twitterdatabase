@@ -8,7 +8,7 @@ A Database for Twitter Content and Network Analysis
 4. Other Notes/Debug
 --------------------------------------
 
-Summary:
+## Summary:
 1. BEFORE running or RE-RUNNING the program, make sure to:
  - i) Empty database using `python clean_database.py`
  - ii) Clean up data directory using `python clean_directory.py <path/to/data>`
@@ -48,7 +48,8 @@ Summary:
     - What Python libraries does this program need?
     - What is ErrorCount.txt for?
     - Error Messages?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
+## Detailed Explanations
 1. IMPORTANT Instructions to follow EVERYTIME BEFORE running program  **CHECKLIST***
 
 These paths will be used to show examples:
