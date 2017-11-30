@@ -10,16 +10,16 @@ A Database for Twitter Content and Network Analysis
 
 Summary:
 1. BEFORE running or RE-RUNNING the program, make sure to:
- *i) Empty database using "python clean_database.py"
- *ii) Clean up data directory using "python clean_directory.py <path/to/data>"
- *iii) Remove all final_xxx.csv and out_xxx.csv and deleted_duplicates.txt files
- *iv) Recommended to run this program in 'screen' mode.
+ - i) Empty database using "python clean_database.py"
+ - ii) Clean up data directory using "python clean_directory.py <path/to/data>"
+ - iii) Remove all final_xxx.csv and out_xxx.csv and deleted_duplicates.txt files
+ - iv) Recommended to run this program in 'screen' mode.
 
 2. Essential Postgresql Database settings to have BEFORE running the programs
- *i) The path to program directory must allow execution by 'others': drwxrwxrwx <- the rightmost x needs to be there.
- *ii) Make sure postgresql database version is at least 9.5+
- *iii) Make sure psql database is pointing to harddrive, and not temp folder
- *iv) Make sure "maintenance_work_mem" is 1 GB.
+ * i) The path to program directory must allow execution by 'others': drwxrwxrwx <- the rightmost x needs to be there.
+ * ii) Make sure postgresql database version is at least 9.5+
+ * iii) Make sure psql database is pointing to harddrive, and not temp folder
+ * iv) Make sure "maintenance_work_mem" is 1 GB.
 
 3. To run the program:
 You need 2 programs: "akmaster.py" "akparse.py"
