@@ -8,7 +8,7 @@ A Database for Twitter Content and Network Analysis
 4. Other Notes/Debug
 --------------------------------------
 
-Too Long Didn't Read:
+Summary:
 1. BEFORE running or RE-RUNNING the program, make sure to:
 i) Empty database using "python clean_database.py"
 ii) Clean up data directory using "python clean_directory.py <path/to/data>"
