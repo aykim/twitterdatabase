@@ -1,14 +1,12 @@
-# twitterdatabase
+# Documentation
 A Database for Twitter Content and Network Analysis
 
-Documentation:
-
-================================================
+--------------------------------------
 1. IMPORTANT Instructions BEFORE running program
 2. IMPORTANT Settings BEFORE running program
 3. Steps in Running the Program
 4. Other Notes/Debug
-================================================
+--------------------------------------
 
 Too Long Didn't Read:
 1. BEFORE running or RE-RUNNING the program, make sure to:
