@@ -11,8 +11,8 @@ These paths will be used as examples:
 This will completely remove all tables from the database.  This is required so that consecutive runs do not make data overlap in the tables.  **FAILURE TO DO THIS WILL MAKE DATA OVERLAP**.
 
 To test that this ran correctly:  
- - Go onto psql commandline and type `\d+`
- - You should get: `No relations found.`
+   - Go onto psql commandline and type `\d+`
+   - You should get: `No relations found.`
 
 ##### 2) Run "clean_directory.py <path/to/directory/to/data>" --> `python clean_directory.py /data/timeline/extract`
 NOTE: the parameter is the path to the data- where all the tar.gz files have been extracted to.
@@ -20,7 +20,7 @@ This path should lead to a huge hierarchy of folders, eventually showing a bunch
 This will remove all folders and jsons that were created from the programs: akmaster.py, akparse.py
 
 To test that this ran correctly:
- - You should see no folders and jsons of the .bz2 files.  You should only see .bz2 files
+   - You should see no folders and jsons of the .bz2 files.  You should only see .bz2 files
 
 ##### 3) REMOVE ALL final_xxx.csv and out_xxx.csv and deleted_duplicates.txt in your program directory
 IMPORTANT:  lines are APPENDED to final_xxx.csv files, so these must be deleted.
