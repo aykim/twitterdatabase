@@ -102,14 +102,14 @@ If is not done, then there will be an error when using COPY command:
 NOTE: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
 HOW TO FIX:  
 	if /data/timeline is my program directory, check with ls -ld command on every folder to the path:  
-	-> ls -ld /  
-	-> ls -ld /data  
-	-> ls -ld /data/timeline  
+	-> `ls -ld /`  
+	-> `ls -ld /data`  
+	-> `ls -ld /data/timeline`  
 All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed  
 	If not, use these commands:  
-	-> sudo chmod 777 /  
-	-> sudo chmod 777 /data  
-	-> sudo chmod 777 /data/timeline  
+	-> `sudo chmod 777 /`  
+	-> `sudo chmod 777 /dat`a  
+	-> `sudo chmod 777 /data/timeline`  
 
 ##### 2) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
 
@@ -140,7 +140,7 @@ I recommend 1GB.  Default setting is 16MB.
 To change this value:  
 i) Look up where "postgresql.conf" file is:  
     `locate postgresql.conf`  
-ii) ***Must be *sudo* user to edit this file:  
+ii) **Must be *sudo* user to edit this file**:  
      "sudo vi /etc/postgresql/9.5/main/postgresql.conf"  
 iii) Change the value: (You can keep the default commented, but make sure new value is uncommented)  
 #maintenance_work_mem = 16MB            # min 1MB  
