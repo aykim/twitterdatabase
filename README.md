@@ -49,7 +49,8 @@ A Database for Twitter Content and Network Analysis
     - What is ErrorCount.txt for?
     - Error Messages?
     
-    
+--------------------------------------
+
 ## Detailed Explanations
 
 ### 1. IMPORTANT Instructions to follow **EVERYTIME BEFORE RUNNING** the program
