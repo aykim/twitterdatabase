@@ -100,6 +100,7 @@ To terminate screen:
 If is not done, then there will be an error when using COPY command:  
 `psycopg2.Programming Error: could not open file "/data/timeline/final_xx.csv" for reading: Permission denied`  
 - NOTE: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
+
 HOW TO FIX:  
 	if /data/timeline is my program directory, check with ls -ld command on every folder to the path:  
 	-> `ls -ld /`  
@@ -108,15 +109,17 @@ HOW TO FIX:
 All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed  
 	If not, use these commands:  
 	-> `sudo chmod 777 /`  
-	-> `sudo chmod 777 /dat`a  
+	-> `sudo chmod 777 /data`  
 	-> `sudo chmod 777 /data/timeline`  
 
-##### 2) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
+##### 2) (When created) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
 
 ##### 3) Postgresql Database Version 9.5 or higher (For faster GIN Index Creation)  
  - To check version on linux commandline:  `psql --version`  
+```
 kima5@garnet:/data/timeline$ psql --version  
 psql (PostgreSQL) 9.5.6  
+```
 
 ##### 4) Postgresql is pointing to HARD DRIVE instead of tmp space.  
 - To look at all tmp and harddrive on server: `df -h`  
@@ -130,11 +133,12 @@ Source: https://www.postgresql.org/docs/9.5/static/gin-tips.html
 
  - To check:  Go to psql interactive terminal:  `psql`  
 Inside psql terminal: `Show maintenance_work_mem;`  
+```
  maintenance_work_mem   
 ----------------------  
  1GB  
 (1 row)  
-
+```
 I recommend 1GB.  Default setting is 16MB.  
 
 To change this value:  
