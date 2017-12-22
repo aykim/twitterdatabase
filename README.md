@@ -224,7 +224,6 @@ If you scroll up to "retweeted_status", you will see in user section, the accoun
 This ruins the data model for usermentionstable's Table.  um_id is NOT NULL, so a null value is not possible.  Also, the way the program parses/retreives data for User_mentions table is from "entities" --> "usermentions"  
 This will also cause a problem when I create the directed graph, because it uses the User_mentions table.  An edge is created using u_id --> um_id.  For this case, um_id would be "null"
 
-User Mentions
 ```
 CREATE TABLE public.usermentionstable
 (
@@ -236,12 +235,11 @@ CREATE TABLE public.usermentionstable
   PRIMARY KEY(t_id, u_id, um_id)
 )
 ```
-Because this problem should not be too common, it has been seen to have 0.0002% occurence.   
-So I do not add this line to UserMentions table and instead, increment this count every time this occurs.   
+This problem should not be too common, it has been seen to have 0.0002% occurence.   
+Therefore, this line is not added to UserMentions table and instead, increment this count every time this occurs.   
 
 3) What is temps folder?   
 In akmaster.py, under function: sort_output, I use -T command in the sort command.   
 If this is not used, then it uses the tmp directory which may no have enough space to handle big files for sorts.   
 
 
-3) Error Messages that I ran into (Not including the ones covered above already)
