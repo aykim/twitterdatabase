@@ -15,22 +15,22 @@ A Database for Twitter Content and Network Analysis
     iii) Remove all `final_xxx.csv` and `out_xxx.csv` and `deleted_duplicates.txt` files  
     iv) Recommended to run this program in 'screen' mode.  
 
-2. Essential Postgresql Database settings to have BEFORE running the programs  
+2. Essential Postgresql Database settings to have BEFORE running the programs:  
     i) The path to program directory must allow execution by 'others': drwxrwxrwx <- the rightmost x needs to be there.  
     ii) Make sure postgresql database version is at least 9.5+  
     iii) Make sure psql database is pointing to harddrive, and not temp folder  
     iv) Make sure "maintenance_work_mem" is 1 GB.  
 
-3. To run the program:  
-  To run the main program: Requires `akmaster.py` and `akparse.py`  
+3. Main Execution:  
+ - To run the main program: Requires `akmaster.py` and `akparse.py`  
       `python akmaster.py <path/to/data>`  
        This will do all the extracting, parsing, sorting, removing duplicates, and creating/filling database tables  
-       - *akparse.py is run automatically inside akmaster.py  
+       *akparse.py is run automatically inside akmaster.py  
 
  - To run the juicy analysis after data in database:  
      `sudo python akpost.py <parameters>`  
      `sudo python akpsql.py <parameters>`  
-    - *sudo solves problem with matplotlib library on garnet server.  
+     *sudo solves problem with matplotlib library on garnet server.  
 
  - Some helpful programs to use to debug:
     - `python akfind.py <path/to/data>`
