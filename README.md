@@ -99,7 +99,8 @@ To terminate screen:
 ##### 1) The path to program directory can be executed by others: drwxrwxrwx <- the rightmost x needs to be there.  
 If is not done, then there will be an error when using COPY command:  
 `psycopg2.Programming Error: could not open file "/data/timeline/final_xx.csv" for reading: Permission denied`  
-- Note: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
+
+Note: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
 
 - How to check:  
 	if `/data/timeline` is my program directory, check with `ls -ld` command on every folder to the path:  
@@ -126,7 +127,7 @@ psql (PostgreSQL) 9.5.6
 ##### 3) Postgresql is pointing to the *hard drive* instead of tmp space.  
  - How to check:  
 Linux commandline to look at all tmp and harddrive(s) on server: `df -h`  
-Linux commandline to check Postgres data: `df /var/lib/postgresql`  <-- Make sure this command shows the harddrive folder*  
+Linux commandline to check Postgres data: `df /var/lib/postgresql`  <-- *Make sure this command shows the harddrive folder*  
 If not, then the program will force the tmp memory to be full, and program will hang forever.  
 
 ##### 4) Postgresql Settings are optimized for Bulk Insertion (all the COPY commands)  
@@ -153,7 +154,7 @@ iii) Change the value: (You can keep the default commented, but make sure new va
 #maintenance_work_mem = 16MB            # min 1MB  
 maintenance_work_mem = 1GB              # min 1MB  
 ```
-iv) After editing this postgresql.conf file, *must* run these commands:  
+  iv) After editing this postgresql.conf file, *must* run these commands:  
     Go to psql interactive terminal: `psql`  
     Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
