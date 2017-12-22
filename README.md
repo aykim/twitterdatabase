@@ -22,9 +22,9 @@ This will remove all folders and jsons that were created from the programs: akma
 To test that this ran correctly:  
    - You should see no folders and jsons of the .bz2 files.  You should only see .bz2 files
 
-##### 3) REMOVE ALL final_xxx.csv and out_xxx.csv and deleted_duplicates.txt in your program directory
-IMPORTANT:  lines are APPENDED to final_xxx.csv files, so these must be deleted.  
-*IF THESE ARE NOT DELETED, THEN FINAL_XXX.CSV FILES WILL CONTAIN REPEATED INFORMATION*.  
+##### 3) REMOVE ALL final_xxx.csv and out_xxx.csv files AND `deleted_duplicates.txt` in your program directory
+**IMPORTANT**:  lines are **APPENDED** to final_xxx.csv files, so `final_` and `out_` files must be deleted.  
+**IF THESE ARE NOT DELETED, THEN FINAL_XXX.CSV FILES WILL CONTAIN REPEATED INFORMATION**.  
 
 To test that this ran correctly:
    - Type `ls` on current directory where all the programs are (/data/timeline).  You should only see python programs.
