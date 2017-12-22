@@ -1,6 +1,8 @@
 # Documentation
 A Database for Twitter Content and Network Analysis  
 
+The purpose of these scripts is to parse/extract data from twitter json, store in Postgres database, then run analysis on the data stored.
+
 --------------------------------------
 1. Instructions BEFORE running program
 2. Settings BEFORE running program
