@@ -88,7 +88,7 @@ It is recommend to run this program using "screen" so that it can run in the bac
 To leave screen: hold three in this order: `ctrl a d`  
 To get back to screen:  `screen -r`  
 if you have more than one screen:  `screen -r <id>`  
-To terminate screen:  
-   - go to screen
-   - press "ctrl a"  then type ":quit"
+To terminate screen:    
+   1) go to screen  
+   2) press "ctrl a"  then type ":quit"  
 
