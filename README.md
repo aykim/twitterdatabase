@@ -15,28 +15,28 @@ To test that this ran correctly:
    - You should get: `No relations found.`
 
 ##### 2) Run "clean_directory.py <path/to/directory/to/data>" --> `python clean_directory.py /data/timeline/extract`
-NOTE: the parameter is the path to the data- where all the tar.gz files have been extracted to.
-This path should lead to a huge hierarchy of folders, eventually showing a bunch of .bz2 files. 
-This will remove all folders and jsons that were created from the programs: akmaster.py, akparse.py
+NOTE: the parameter is the path to the data- where all the tar.gz files have been extracted to.  
+This path should lead to a huge hierarchy of folders, eventually showing a bunch of .bz2 files.  
+This will remove all folders and jsons that were created from the programs: akmaster.py, akparse.py  
 
-To test that this ran correctly:
+To test that this ran correctly:  
    - You should see no folders and jsons of the .bz2 files.  You should only see .bz2 files
 
 ##### 3) REMOVE ALL final_xxx.csv and out_xxx.csv and deleted_duplicates.txt in your program directory
-IMPORTANT:  lines are APPENDED to final_xxx.csv files, so these must be deleted.
-If these are not deleted, then final_xxx.csv files will contain 2x repeating info.
-IF THESE ARE NOT DELETED, THEN FINAL_XXX.CSV FILES WILL CONTAIN REPEATED INFORMATION.
+IMPORTANT:  lines are APPENDED to final_xxx.csv files, so these must be deleted.  
+*IF THESE ARE NOT DELETED, THEN FINAL_XXX.CSV FILES WILL CONTAIN REPEATED INFORMATION*.  
+
 To test that this ran correctly:
-    Type "ls" on current directory where all the programs are (/data/timeline).  You should only see python programs.
+   - Type `ls` on current directory where all the programs are (/data/timeline).  You should only see python programs.
 
 ##### 4) ***OPTIONAL***
 It is recommend to run this program using "screen" so that it can run in the background.  These programs may take a very long time.
-"screen"
-start program
-To leave screen: hold three in this order: "ctrl a d"
-To get back to screen:  "screen -r"
-if you have more than one screen:  "screen -r <id>"
-To terminate screen:
-    1) go to screen
-    2) press "ctrl a"  then type ":quit"
+`screen`  
+<start program>  
+To leave screen: hold three in this order: `ctrl a d`  
+To get back to screen:  `screen -r`  
+if you have more than one screen:  `screen -r <id>`  
+To terminate screen:  
+   - go to screen
+   - press "ctrl a"  then type ":quit"
 
