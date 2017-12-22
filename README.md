@@ -108,7 +108,7 @@ Note: If you google this, people will say this is due to running COPY instead of
 	-> `ls -ld /data`  
 	-> `ls -ld /data/timeline`  
 All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed  
-- How to fix  
+- How to fix:  
 	If not, use these commands:  
 	-> `sudo chmod 777 /`  
 	-> `sudo chmod 777 /data`  
@@ -144,7 +144,7 @@ Inside psql terminal: `Show maintenance_work_mem;`
 ```
 I recommend 1GB.  Default setting is 16MB.  
 
-- How to fix   
+- How to fix:   
 i) Look up where "postgresql.conf" file is:  
     `locate postgresql.conf`  
 ii) Must be *sudo* user to edit this file:  
