@@ -112,22 +112,22 @@ All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed
 	-> `sudo chmod 777 /data`  
 	-> `sudo chmod 777 /data/timeline`  
 
-##### 2) (When created) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
+##### 1.5) (When created) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
 
-##### 3) Postgresql Database Version 9.5 or higher (For faster GIN Index Creation)  
+##### 2) Postgresql Database Version 9.5 or higher (For faster GIN Index Creation)  
  - To check version on linux commandline:  `psql --version`  
 ```
 kima5@garnet:/data/timeline$ psql --version  
 psql (PostgreSQL) 9.5.6  
 ```
 
-##### 4) Postgresql is pointing to HARD DRIVE instead of tmp space.  
-- To look at all tmp and harddrive on server: `df -h`  
+##### 3) Postgresql is pointing to HARD DRIVE instead of tmp space.  
+To look at all tmp and harddrive on server: `df -h`  
 To check Postgres data: `df /var/lib/postgresql`  
-    Make sure this command shows the harddrive folder  
+   - Make sure this command shows the harddrive folder  
 If not, then the program will force the tmp memory to be full, and program will hang forever.  
 
-##### 5) Postgresql Settings are optimized for Bulk Insertion (all the COPY commands)  
+##### 4) Postgresql Settings are optimized for Bulk Insertion (all the COPY commands)  
 "maintenance_work_mem:  Build time for a GIN index is very sensitive to the maintenance_work_mem setting; it doesn't pay to skimp on work memory during index creation."  
 Source: https://www.postgresql.org/docs/9.5/static/gin-tips.html  
 
