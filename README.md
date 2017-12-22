@@ -51,7 +51,7 @@ A Database for Twitter Content and Network Analysis
     
 --------------------------------------
 
-## Detailed Explanations
+## Detailed In-Depth Explanations
 
 ### 1. Critical Instructions to follow **everytime before running** the program
 
