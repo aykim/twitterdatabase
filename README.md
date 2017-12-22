@@ -22,15 +22,15 @@ A Database for Twitter Content and Network Analysis
     iv) Make sure "maintenance_work_mem" is 1 GB.  
 
 3. To run the program:  
-  To run the main program: Requires "akmaster.py" and "akparse.py"  
+  To run the main program: Requires `akmaster.py` and `akparse.py`  
       `python akmaster.py <path/to/data>`  
        This will do all the extracting, parsing, sorting, removing duplicates, and creating/filling database tables  
-       akparse.py is run automatically inside akmaster.py  
+       - *akparse.py is run automatically inside akmaster.py  
 
- - To run the juicy analysis after data in database:
-    - `sudo python akpost.py <parameters>`
-    - `sudo python akpsql.py <parameters>`
-    - *sudo solves problem with matplotlib library on garnet server.
+ - To run the juicy analysis after data in database:  
+     `sudo python akpost.py <parameters>`  
+     `sudo python akpsql.py <parameters>`  
+    - *sudo solves problem with matplotlib library on garnet server.  
 
  - Some helpful programs to use to debug:
     - `python akfind.py <path/to/data>`
