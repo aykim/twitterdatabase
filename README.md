@@ -55,7 +55,7 @@ A Database for Twitter Content and Network Analysis
 
 ### 1. Critical Instructions to follow **everytime before running** the program
 
-These paths will be used as examples:
+The following two paths will be used as examples:
  - `/data/timeline`  <-- Directory that contains the 7 python programs.  Results from program are output into this folder
  - `/data/timeline/extract`   <--- Where all the archive twitter data .tar.gz files have been extracted to.  **_Please manually extract all .tar.gz files into 1 directory_** (since the code goes through all subdirectories in the specified path, folder hierarchy does not matter)
 
