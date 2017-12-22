@@ -1,4 +1,55 @@
+# Documentation
+A Database for Twitter Content and Network Analysis
 
+--------------------------------------
+1. IMPORTANT Instructions BEFORE running program
+2. IMPORTANT Settings BEFORE running program
+3. Steps in Running the Program
+4. Other Notes/Debug
+--------------------------------------
+
+## Summary:
+1. BEFORE running or RE-RUNNING the program, make sure to:
+ - i) Empty database using `python clean_database.py`
+ - ii) Clean up data directory using `python clean_directory.py <path/to/data>`
+ - iii) Remove all `final_xxx.csv` and `out_xxx.csv` and `deleted_duplicates.txt` files
+ - iv) Recommended to run this program in 'screen' mode.
+
+2. Essential Postgresql Database settings to have BEFORE running the programs
+ * i) The path to program directory must allow execution by 'others': drwxrwxrwx <- the rightmost x needs to be there.
+ * ii) Make sure postgresql database version is at least 9.5+
+ * iii) Make sure psql database is pointing to harddrive, and not temp folder
+ * iv) Make sure "maintenance_work_mem" is 1 GB.
+
+3. To run the program:
+ - To run the main program: Requires "akmaster.py" and "akparse.py"
+    - `python akmaster.py <path/to/data>`
+    - This will do all the extracting, parsing, sorting, removing duplicates, and creating/filling database tables
+    - akparse.py is run automatically inside akmaster.py
+
+ - To run the juicy analysis after data in database:
+    - `sudo python akpost.py <parameters>`
+    - `sudo python akpsql.py <parameters>`
+    - *sudo solves problem with matplotlib library on garnet server.
+
+ - Some helpful programs to use to debug:
+    - `python akfind.py <path/to/data>`
+
+ - Overall 7 python files:
+    - akmaster.py
+    - akparse.py
+    - akpsql.py
+    - akpost.py
+    - clean_database.py
+    - clean_directory.py
+    - akfind.py
+
+4. Other Notes
+    - What Python libraries does this program need?
+    - What is ErrorCount.txt for?
+    - Error Messages?
+    
+    
 ## Detailed Explanations
 
 ### 1. IMPORTANT Instructions to follow **EVERYTIME BEFORE RUNNING** the program
