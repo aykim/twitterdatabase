@@ -144,7 +144,7 @@ I recommend 1GB.  Default setting is 16MB.
 To change this value:  
 i) Look up where "postgresql.conf" file is:  
     `locate postgresql.conf`  
-ii) **Must be *sudo* user to edit this file**:  
+ii) Must be *sudo* user to edit this file:  
      `sudo vi /etc/postgresql/9.5/main/postgresql.conf`  
 iii) Change the value: (You can keep the default commented, but make sure new value is uncommented)  
 ```
@@ -152,11 +152,11 @@ iii) Change the value: (You can keep the default commented, but make sure new va
 maintenance_work_mem = 1GB              # min 1MB  
 ```
 
-iv) After editing this postgresql.conf file, MUST run these commands:  
+iv) After editing this postgresql.conf file, *must* run these commands:  
     Go to psql interactive terminal: `psql`  
-    run command:  `SELECT pg_reload_conf();`  
+    Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
-Database does not need to be restarted.  
+- Note: Database does not need to be restarted.  
 
 To check if everything worked:  
     Go to psql interactive terminal: `psql`  
