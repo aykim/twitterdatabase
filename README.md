@@ -150,11 +150,7 @@ i) Look up where "postgresql.conf" file is:
 ii) Must be *sudo* user to edit this file:  
      `sudo vi /etc/postgresql/9.5/main/postgresql.conf`  
 iii) Change the value: (You can keep the default commented, but make sure new value is uncommented)  
-```
-#maintenance_work_mem = 16MB            # min 1MB  
-maintenance_work_mem = 1GB              # min 1MB  
-```
-iiV) After editing this postgresql.conf file, *must* run these commands:  
+iv) After editing this postgresql.conf file, *must* run these commands:  
     Go to psql interactive terminal: `psql`  
     Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
