@@ -99,14 +99,15 @@ To terminate screen:
 ##### 1) The path to program directory can be executed by others: drwxrwxrwx <- the rightmost x needs to be there.  
 If is not done, then there will be an error when using COPY command:  
 `psycopg2.Programming Error: could not open file "/data/timeline/final_xx.csv" for reading: Permission denied`  
-- NOTE: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
+- Note: If you google this, people will say this is due to running COPY instead of psycopg2's copy_from function.   I have tested implementing copy_from, and it causes random errors (ie: psycopg2.DataError: date/time field value out of range: 0")  
 
-HOW TO FIX:  
+- How to check:  
 	if /data/timeline is my program directory, check with ls -ld command on every folder to the path:  
 	-> `ls -ld /`  
 	-> `ls -ld /data`  
 	-> `ls -ld /data/timeline`  
 All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed  
+- How to fix
 	If not, use these commands:  
 	-> `sudo chmod 777 /`  
 	-> `sudo chmod 777 /data`  
@@ -115,23 +116,26 @@ All 3 of these commands should show "d___ ___ __x"  <-- rightmost x needed
 ##### 1.5) (When created) All final_xxx.csv files should be rwxrwxrwx because they are used to COPY into the database
 
 ##### 2) Postgresql Database Version 9.5 or higher (For faster GIN Index Creation)  
- - To check version on linux commandline:  `psql --version`  
+ - How to check:
+     Linux commandline:  `psql --version`  
 ```
 kima5@garnet:/data/timeline$ psql --version  
 psql (PostgreSQL) 9.5.6  
 ```
 
 ##### 3) Postgresql is pointing to HARD DRIVE instead of tmp space.  
-To look at all tmp and harddrive on server: `df -h`  
-To check Postgres data: `df /var/lib/postgresql`  
-   - Make sure this command shows the harddrive folder  
+ - How to check:
+Linux commandline to look at all tmp and harddrive(s) on server: `df -h`  
+On linux commandline to check Postgres data: `df /var/lib/postgresql`  
+*Make sure this command shows the harddrive folder*  
 If not, then the program will force the tmp memory to be full, and program will hang forever.  
 
 ##### 4) Postgresql Settings are optimized for Bulk Insertion (all the COPY commands)  
 "maintenance_work_mem:  Build time for a GIN index is very sensitive to the maintenance_work_mem setting; it doesn't pay to skimp on work memory during index creation."  
 Source: https://www.postgresql.org/docs/9.5/static/gin-tips.html  
 
- - To check:  Go to psql interactive terminal:  `psql`  
+ - How to check:
+Linux commandline to go to psql interactive terminal:  `psql`  
 Inside psql terminal: `Show maintenance_work_mem;`  
 ```
  maintenance_work_mem   
@@ -141,7 +145,7 @@ Inside psql terminal: `Show maintenance_work_mem;`
 ```
 I recommend 1GB.  Default setting is 16MB.  
 
-To change this value:  
+- How to fix  
 i) Look up where "postgresql.conf" file is:  
     `locate postgresql.conf`  
 ii) Must be *sudo* user to edit this file:  
@@ -156,7 +160,7 @@ iv) After editing this postgresql.conf file, *must* run these commands:
     Go to psql interactive terminal: `psql`  
     Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
-- Note: Database does not need to be restarted.  
+    - Note: Database does not need to be restarted.  
 
 To check if everything worked:  
     Go to psql interactive terminal: `psql`  
