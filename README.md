@@ -25,7 +25,6 @@ A Database for Twitter Content and Network Analysis
  - To run the main program: Requires `akmaster.py` and `akparse.py`  
       `python akmaster.py <path/to/data>`  
        This will do all the extracting, parsing, sorting, removing duplicates, and creating/filling database tables  
-       *akparse.py is run automatically inside akmaster.py  
 
  - To run the juicy analysis after data in database:  
      `sudo python akpost.py <parameters>`  
@@ -159,3 +158,90 @@ iv) After editing this postgresql.conf file, *must* run these commands:
     Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
     - Note: Database does not need to be restarted.   
+
+
+--------------------------------------
+
+### 3. Steps in Executing the main program
+
+You need 2 programs: `akmaster.py` `akparse.py`  
+--> `python akmaster.py <path/to/data>`  
+This will do all extraction, parse, sort, remove duplicates, and put into database tables. 
+ - *akparse.py is run automatically inside akmaster.py*  
+
+To run the juicy analysis after data in database:  
+--> `sudo python akpost.py <parameters>`  
+--> `sudo python akpsql.py <parameters>`  
+
+Some helpful programs to use to debug:
+--> `python akfind.py <path/to/data>`
+
+Overall 7 python files:  
+akmaster.py - This will do all extraction, parse, sort, remove duplicates, and put into database tables.  
+akparse.py - This is inside akmaster.py;  Parses and creates all the json and folders in data directory  
+akpsql.py - Creates Histograms based on User Parameters.  Using "-ws" gives Word Frequency in Table Format  
+akpost.py - Creates Directed Graphs and Top X Centrality data.  Outputs csv file of directed graph to be opened in Gephi  
+clean_database.py - Completely removes all tables.  Clean slate database  
+clean_directory.py - Removes .bz2's folders and .bz2's json files in specified data directory  
+akfind.py - Helpful debug tool to look for json file to find which line the error occured  
+
+
+-------------------------------
+### 4. Other Notes
+
+1) Python Library Installation  
+It will be obvious which libraries are missing when running the program fails.    
+Google and Stack Overflow.  
+
+
+2) ErrorCount.txt:  
+Normally, if there is a retweet_status  (meaning, this tweet A is a retweet of another tweet B)  
+              then in A's "entities" --> "user_mentions", the userid, name, screen name of B's author is given.  
+
+However, there seems to be a rare case in "entities" --> "user_mentions", only the screen name was given, and userid was left 'null'
+This is not the norm, and in any other retweet case,  all of the information is given in "entities" --> "usermentions".  This is twitter's recording fault.
+
+In the original json of this specific problem, you will see the "entities" -> "usermensions" and see this:  
+```
+	"user_mentions":[
+		{"screen_name":"5wality",
+		"name":null,
+		"id":null,
+		"id_str":null,
+		"indices":[3,11]
+```
+If you scroll up to "retweeted_status", you will see in user section, the account does have a name and id:
+```
+	"user":{
+		"id":603469338,
+		"id_str":"603469338",
+		"name":"\u2693\ufe0f",
+		"screen_name":"5wality",
+		"location":"UAEU ",
+```
+(This means that 5wality is correctly storred into Users table, and does infact, have an id number)
+
+This ruins the data model for usermentionstable's Table.  um_id is NOT NULL, so a null value is not possible.  Also, the way the program parses/retreives data for User_mentions table is from "entities" --> "usermentions"  
+This will also cause a problem when I create the directed graph, because it uses the User_mentions table.  An edge is created using u_id --> um_id.  For this case, um_id would be "null"
+
+User Mentions
+```
+CREATE TABLE public.usermentionstable
+(
+  t_id bigint NOT NULL,
+  u_id bigint NOT NULL,
+  um_id bigint NOT NULL,
+  um_name character varying,
+  um_screenname character varying,
+  PRIMARY KEY(t_id, u_id, um_id)
+)
+```
+Because this problem should not be too common, it has been seen to have 0.0002% occurence.   
+So I do not add this line to UserMentions table and instead, increment this count every time this occurs.   
+
+3) What is temps folder?   
+In akmaster.py, under function: sort_output, I use -T command in the sort command.   
+If this is not used, then it uses the tmp directory which may no have enough space to handle big files for sorts.   
+
+
+3) Error Messages that I ran into (Not including the ones covered above already)
