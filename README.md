@@ -2,8 +2,8 @@
 A Database for Twitter Content and Network Analysis
 
 --------------------------------------
-1. IMPORTANT Instructions BEFORE running program
-2. IMPORTANT Settings BEFORE running program
+1. Instructions BEFORE running program
+2. Settings BEFORE running program
 3. Steps in Running the Program
 4. Other Notes/Debug
 --------------------------------------
@@ -123,16 +123,14 @@ kima5@garnet:/data/timeline$ psql --version
 psql (PostgreSQL) 9.5.6  
 ```
 
-##### 3) Postgresql is pointing to HARD DRIVE instead of tmp space.  
+##### 3) Postgresql is pointing to the *hard drive* instead of tmp space.  
  - How to check:  
 Linux commandline to look at all tmp and harddrive(s) on server: `df -h`  
-On linux commandline to check Postgres data: `df /var/lib/postgresql`  
-*Make sure this command shows the harddrive folder*  
+Linux commandline to check Postgres data: `df /var/lib/postgresql`  <-- Make sure this command shows the harddrive folder*  
 If not, then the program will force the tmp memory to be full, and program will hang forever.  
 
 ##### 4) Postgresql Settings are optimized for Bulk Insertion (all the COPY commands)  
-"maintenance_work_mem:  Build time for a GIN index is very sensitive to the maintenance_work_mem setting; it doesn't pay to skimp on work memory during index creation."  
-Source: https://www.postgresql.org/docs/9.5/static/gin-tips.html  
+"maintenance_work_mem:  Build time for a GIN index is very sensitive to the maintenance_work_mem setting; it doesn't pay to skimp on work memory during index creation."  - source: https://www.postgresql.org/docs/9.5/static/gin-tips.html  
 
  - How to check:  
 Linux commandline to go to psql interactive terminal:  `psql`  
@@ -155,14 +153,8 @@ iii) Change the value: (You can keep the default commented, but make sure new va
 #maintenance_work_mem = 16MB            # min 1MB  
 maintenance_work_mem = 1GB              # min 1MB  
 ```
-
 iv) After editing this postgresql.conf file, *must* run these commands:  
     Go to psql interactive terminal: `psql`  
     Run command:  `SELECT pg_reload_conf();`  
 source: http://www.heatware.net/databases/postgresql-reload-config-without-restarting/  
-    - Note: Database does not need to be restarted.  
-
-To check if everything worked:  
-    Go to psql interactive terminal: `psql`  
-    run command: `Show maintenance_work_mem;`  
-    Your result should be your new value.  
+    - Note: Database does not need to be restarted.   
