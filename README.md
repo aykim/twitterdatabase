@@ -60,7 +60,7 @@ The following two paths will be used as examples:
  - `/data/timeline/extract`   <--- Where all the archive twitter data .tar.gz files have been extracted to.  **_Please manually extract all .tar.gz files into 1 directory_** (since the code goes through all subdirectories in the specified path, folder hierarchy does not matter)
 
 ##### 1) Run "clean_database.py" -->  `python clean_database.py`
-This will completely remove all tables from the database.  This is required so that consecutive runs do not make data overlap in the tables.  **Failure to do this will make data overlap**.
+This will completely remove all tables from the database.  This is required so that consecutive runs do not make data overlap in the tables.  **Note: Failure to do this will make data overlap**.
 
 To test that this ran correctly:  
    - Go onto psql commandline and type `\d+`
@@ -76,7 +76,7 @@ To test that this ran correctly:
 
 ##### 3) REMOVE ALL final_xxx.csv and out_xxx.csv files AND `deleted_duplicates.txt` in your program directory
 **Important**:  lines are **appended** to final_xxx.csv files, so `final_` and `out_` files must be deleted.  
-**If these are not deleted, then final_xxx.csv files will contain repeated information**.  
+**Note: If these are not deleted, then final_xxx.csv files will contain repeated information**.  
 
 To test that this ran correctly:
    - Type `ls` on current directory where all the programs are (/data/timeline).  You should only see python programs.
